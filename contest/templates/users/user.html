@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h2>{% if theuser.is_superuser %}
+	[Admin] 
+	{% else %}
+		{% if theuser.is_staff %}
+		[Staff] 
+		{% else %}
+			{% if not theuser.is_active %}
+			[Suspended] 
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	{{ theuser.username }}</h2>
+{% if theuser.first_name and theuser.last_name %}
+<b>Full Name:</b> {{theuser.first_name}} {{theuser.last_name}}<br />
+{% endif %}
+<b>Join date:</b> {{theuser.date_joined}}<br />
+<b>Last login:</b> {{theuser.last_login}}<br />
+<br />
+{% if entries %}
+	<h3>Entries</h3>
+	<ul>
+	{% for entry in entries %}
+		<li><a href="/contests/entry/{{entry.id}}/">{{entry.title}}</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+{% endblock %}

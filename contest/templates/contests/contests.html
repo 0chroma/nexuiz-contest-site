@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Contests</h1>
+	<p>
+	{% if contest_list %}
+	    <table width="100%">
+	    	<thead>
+	    		<tr>
+	    			<th>&nbsp;</th>
+	    			<th>Name</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+	    		</tr>
+	    	</thead>
+	    {% for contest in contest_list %}
+	        <tr>
+	        	<td>{{ contest.id }}.</td>
+	        	<td><a href="/contests/{{ contest.id }}/">{{ contest.title }}</a></td>
+				<td>{{ contest.start_date }}</td>
+				<td>{{ contest.end_date }}</td>
+	        </tr>
+	    {% endfor %}
+	    </table>
+	{% else %}
+	    <p>No contests are available.</p>
+	{% endif %}
+	</p>
+{% endblock %}

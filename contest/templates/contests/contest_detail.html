@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ contest.title }}</h1>
+<div><b>Start Date: </b>{{ contest.start_date }}</div>
+<div><b>End Date: </b>{{ contest.end_date }}</div>
+<div><b>Judging Deadline: </b>{{ contest.judge_date }}</div>
+<div><b>Description:</b><br />{{ contest.description }}</div>
+<h3>Entries</h3>
+{% if entries %}
+<table style="width: 100%;">
+	<thead>
+		<th>Title</th>
+		<th>Submitant</th>
+		<th>Score</th>
+	</thead>
+{% for e in entries %}
+{% if e.disqualified %}
+<tr style="background-color: gray;">
+{% else %}
+<tr>
+{% endif %}
+	<td>{% if e.disqualified %}<span style="color: red;">[Disqualified]</span>{% endif %}<a href="/contests/entry/{{ e.id }}/">{{ e.title }}</a></td>
+	<td><a href="/user/{{ e.user.id }}/">{{ e.user }}</a></td>
+	<td>{{ e.get_score }}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<i>No entries yet</i>
+{% endif %}
+{% endblock %}

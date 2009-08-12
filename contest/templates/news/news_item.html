@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if entry %}
+<h1>{{entry.title}}</h1>
+<i>Written on {{entry.pub_date}} by <a href="/user/{{entry.author.id}}/">{{entry.author}}</a></i>
+<p>{{entry.content}}</p>
+{% else %}
+<p>Could not find entry</p>
+{% endif %}
+{% endblock %}

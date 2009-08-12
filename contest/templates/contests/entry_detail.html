@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/site_media/dojo/dijit/themes/dojo.css" type="text/css">
+<link rel="stylesheet" href="/site_media/dojo/dijit/themes/tundra/tundra.css" type="text/css">
+<script type="text/javascript" src="/site_media/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+<script type="text/javascript">
+dojo.require("dijit.Dialog");
+dojo.addOnLoad(function() {
+	dojo.byId("screenlink").href="javascript://";
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div style="float: right; padding: 10px; margin-right: 20px; border: 1px solid white">
+	<center>
+		{% if entry.screenshot %}<a id="screenlink" href="/{{ entry.screenshot }}" onclick="dijit.byId('biggerScreenshot').show()"><img src="/{{ thumb }}" alt="screenshot" /></a>{% endif %}
+	<h3>Score:</h3>
+	<h1>{{ entry.get_score }}</h1>
+	</center>
+</div>
+<h2>{{ entry.title }}</h2>
+<i>By <a href="/user/{{ entry.user.id }}/">{{ entry.user }}</a></i><br />
+Entered in <a href="/contests/{{ entry.contest.id }}/">{{ entry.contest.title }}</a><br /><br />
+<a href="/{{ entry.map }}">Download Map</a>
+<br />
+<h3>Scores</h3>
+{% if scores %}
+	<ul>
+	{% for score in scores %}
+		<li><a href="/users/{{ score.user.id }}/">{{score.user}}</a>
+			<ul>
+				<li>Visuals: {{score.visuals_score}}</li>
+				<li>Gameplay: {{score.gameplay_score}}</li>
+				<li>Average: {{score.get_average}}</li>
+				<li>Comments: {{score.comments}}</li>
+			</ul>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<b>No scores yet</b>
+{% endif %}
+<div class="tundra" style="color: gray;" dojoType="dijit.Dialog" id="biggerScreenshot" title="Screenshot of \"{{ entry.title }}\"" style="display: none;">
+	<a href="javascript://" onclick="dijit.byId('biggerScreenshot').hide()">
+		<img src="/{{ entry.screenshot }}" alt="bigger screenshot" />
+	</a>
+</div>
+{% endblock %}

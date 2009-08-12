@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if perms.entry.can_add %}
+{% if contests %}
+<h1>Submit entry</h1>
+<center>
+<div style="text-align: left; width: 75%;">
+<form action="/contests/submit/" method="post" enctype="multipart/form-data">
+	{{ form_as_table }}
+	<input type="submit" value="Submit" />
+</form>
+</div>
+</center>
+{% else %}
+<p>There are no active contests at this time.</p>
+{% endif %}
+{% else %}
+<center><p>You must be a participant to submit entries.</p></center>
+{% endif %}
+{% endblock %}

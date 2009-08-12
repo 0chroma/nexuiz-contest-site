@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Nexuiz Mapping Contest{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="/site_media/main.css" type="text/css">
+		{%comment%}{% block dojo %}
+		<link rel="stylesheet" href="/site_media/dojo/dijit/themes/tundra/tundra.css" type="text/css">
+		<script type="text/javascript" src="/site_media/dojo/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
+		{% endblock %}
+		<script type="text/javascript">//{% block dojoincludes %}{% endblock %}</script>
+		{%endcomment%}
+		{% block head %}
+		{% endblock %}
+	</head>
+	<body>
+		<center>
+			<div class="body">
+				<div class="header"></div>
+				<div class="mainbody">
+					<div class="menu">
+						<p class="navigation">
+							<h1 class="head">Navigation</h1>
+				            <a class="menulink" href="/">Index</a><br>
+				            <a class="menulink" href="/contests/">Contests</a><br>
+				            <a class="menulink" href="/contests/rules/">Rules</a><br>
+							{% block menu %}
+							{% endblock %}
+				            
+						</p>
+						<p class="navigation">
+						{% block login %}
+							{% if user.is_authenticated %}
+							<center>
+							<b>Hello, {{user.username}}</b><br />
+							<a href="/user/accounts/logout/">Logout</a>
+							</center>
+							{% else %}
+							<h1 class="head">Login</h1>
+							<form action="/user/accounts/login/" method="post" id="login-form">
+							  <div class="form-row">
+							    <label for="id_username">Username:</label> <input type="text" name="username" style="width: 100px;" id="id_username" />
+							  </div>
+							  <div class="form-row">
+							    <label for="id_password">Password:</label> <input type="password" name="password" style="width: 100px;" id="id_password" />
+							
+							    <input type="hidden" name="this_is_the_login_form" value="1" />
+							    <input type="hidden" name="post_data" value="{{ post_data }}" />
+								<input type="hidden" name="next" value="{{ path }}" />
+							  </div>
+							  <div class="submit-row">
+								<input type="submit" value="Log in" />
+							  </div>
+							</form>
+							{% endif %}
+						{% endblock %}
+						</p>
+					</div>
+					<div class="content">
+						<p>
+						{% block content %}
+						{% endblock %}
+						</p>
+					</div>
+				</div>
+				<div class="footer">
+					<center><p style="color: grey;">Contest script by <a href="http://www.psychdesigns.net/psych/">psychiccyberfreak</a></p></center>
+				</div>
+			</div>
+		</center>
+	</body>
+</html>

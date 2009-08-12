@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>News</h1>
+{% if news_list %}
+{% for entry in news_list %}
+<h2><a href="/news/{{entry.id}}/">{{entry.title}}</a></h2>
+<i>Written on {{entry.pub_date}} by <a href="/user/{{entry.author.id}}/">{{entry.author}}</a></i>
+<p>{{entry.content}}</p>
+<hr />
+{% endfor %}
+{% else %}
+<p>No news items have been written.</p>
+{% endif %}
+{% endblock %}

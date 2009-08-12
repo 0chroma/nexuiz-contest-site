@@ -1,0 +1,92 @@
+body {
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+ 	font-family: Verdana, Tahoma, Arial, sans-serif;
+	font-size: 10px;
+	color: #ffffff;
+ 	background-color: #000000;
+	background-image: url('./images/background.jpg');
+	background-repeat: repeat-x;
+	margin:0;
+	text-align: center;
+}
+a:link { color: #666666; }
+a:visited { color: #666666; } 
+.body {
+	width: 760px;
+	text-align: left;
+}
+.header {
+	background-image: url("./images/logo.gif");
+	height: 143px;
+	width: 760px;
+	background-repeat: no-repeat;
+}
+.mainbody {
+	background-image: url("./images/menuback.gif");
+	background-repeat: repeat-y;
+	background-color: black;
+	padding-left: 5px;
+	padding-right: 5px;
+	float: left;
+}
+.footer {
+	background-image: url("./images/bottom.gif");
+	width: 760px;
+	height: 70px;
+	background-repeat: no-repeat;
+	float: left;
+}
+.menu {
+	width: 112px;
+	overflow-x: hidden;
+	float: left;
+}
+.content {
+	width: 630px;
+	padding-left: 4px;
+	overflow-x: auto;
+}
+.menulink {
+	text-decoration: none; 
+}
+.menulink:hover { 
+	text-decoration: none;
+	color: #434343; 
+}
+.menuhead { 
+	padding:3px; 
+	font-family: Verdana, Arial; 
+	font-size: 13px; 
+	color: #999999; 
+}
+.navigation {
+	font-size: 12pt;
+}
+.head {
+	font-size: 12pt;
+}
+input {
+	background: #000000;
+	border: 1px solid white;
+	color: white;
+}
+select {
+	background: #000000;
+	border: 1px solid white;
+	color: white;
+}
+textarea {
+	background: #000000;
+	border: 1px solid white;
+	color: white;
+}
+#NEWSTABLE { font-family: Verdana, Arial; font-size: 10px; color: #ffffff; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px }
+QUOTE { font-family: Verdana, Arial; font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+CODE  { font-family: Courier New, Verdana, Arial;  font-size: 11px; color: #465584; background-color: #FAFCFE; border: 1px solid #000; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px }
+TABLE, TR, TD { font-family: Verdana, Tahoma, Arial, sans-serif; font-size: 10px; color: #ffffff; }
